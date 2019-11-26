@@ -3,20 +3,21 @@ DNN: MNIST MODEL: Test Score: [0.017225117182139364, 0.9954]
 ------------------------------------------------------------
 
 Total params: 12,328
+------------
 
 Following Strategy is used to optimize the model performance:
 -------------------------------------------------------------
 
-1. Batch Normaliztaion and Dropout layer is removed from the last convolution layer. 
+1. Batch Normalization and Dropout layer is removed from the last convolution layer. 
    As this Conv layer is closest to the output layer, it does not make sense to drop features learnt so far at this layer.
    This helped to bring training and validation accuracy closer.
    
-2. To reduced the network parameters, the number of kernals is reduced in first convolution block to 8 and 16.
-   this helped to reduced the number of netwrok parameters and still acheiving validation accuracy above 94%
+2. To reduced the network parameters, the number of kernels is reduced in first convolution block to 8 and 16.
+   this helped to reduced the number of network parameters and still acheiving validation accuracy above 94%
    
-3. Similarlly number of kernals is set to 8 for 1x1 layer of first Conv block. this further helped to reduce the NW parameters.
+3. Similarlly number of kernels is set to 8 for 1x1 layer of first Conv block. this further helped to reduce the NW parameters.
    1X1 layer is used to combine the existing channels and create fewer number of complex channels and helped in depth reduction.
-   Doining so helped to reduced number of parameter reeded for next layer.
+   Doing so helped to reduced number of parameters needed for next layer.
 
 4. Learning Rate scheduler is applied such that learning rate(LR) reduces after each epochs. For initial epochs learning rate will be high 
    and as the epochs progresses the LR reduces with decreasing margin. 
@@ -24,10 +25,13 @@ Following Strategy is used to optimize the model performance:
 
 5. Dropout and BatchNormalization are used for each convolution layer except for the last layer to avoid overfitting of the model.
 
-6. Final Model is build after many iterations and changes were made one at a time.
+6. Final Model is build after experimenting with many iterations as changes were made one at a time.
    For every model build, kernals was visualized to understand what features are extracted and 
    how accuracy is impacted to help taking decision for next step.
-   
+
+7. Model is built using 2 convolution block. First block with 2 layer followed by 1X1 and Maxpool layer. 
+   Second conv block having 4 convolution layers with 16 kernels each. 
+   Each conv layers except last one is using activation fxn as ReLU for non-linear transformation.
 
 
 Model Epoch History
