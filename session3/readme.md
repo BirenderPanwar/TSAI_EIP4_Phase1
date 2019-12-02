@@ -30,49 +30,78 @@ Following Strategy is used to optimize the model performance:
 
 Model Summary with Output dimensions and Global Receptive Field for each layer
 ------------------------------------------------------------------------------
-# Define the model
+#Define the model
 model1 = Sequential(name = "model_CIFAR10")
 
-# Convolution Block-1
+#Convolution Block-1
 model1.add(SeparableConv2D(32, (3, 3), padding='same', input_shape=(32, 32, 3), use_bias = False, name="blk1_ly1_conv")) #OUT: 32X32X32, GRF: 3X3
+
 model1.add(Activation('relu'))
+
 model1.add(BatchNormalization(name="blk1_ly1_batchnorm"))
+
 model1.add(SeparableConv2D(64, (3, 3), use_bias = False, name="blk1_ly2_conv")) #OUT: 30X30X64, GRF: 5X5
+
 model1.add(Activation('relu'))
+
 model1.add(BatchNormalization(name="blk1_ly2_batchnorm"))
 
+
 model1.add(MaxPooling2D(pool_size=(2, 2), name="blk1_maxpool")) #OUT: 15X15X64, GRF: 6X6
+
 model1.add(Convolution2D(32, (1, 1), activation='relu', use_bias = False, name="blk1_combine")) #OUT: 15X15X32, GRF: 6X6
+
 model1.add(Dropout(0.20, name="blk1_ly2_dropout"))
 
-# Convolution Block-2
+
+#Convolution Block-2
 model1.add(SeparableConv2D(64, (3, 3), padding='same', use_bias = False, name="blk2_ly1_conv")) #OUT: 15X15X64, GRF: 10X10
+
 model1.add(Activation('relu'))
+
 model1.add(BatchNormalization(name="blk2_ly1_batchnorm"))
+
 model1.add(SeparableConv2D(96, (3, 3), use_bias = False, name="blk2_ly2_conv")) #OUT: 13X13X96, GRF: 14X14
+
 model1.add(Activation('relu'))
+
 model1.add(BatchNormalization(name="blk2_ly2_batchnorm"))
+
 model1.add(SeparableConv2D(128, (3, 3), use_bias = False, name="blk2_ly3_conv")) #OUT: 11X11X128, GRF: 18X18
+
 model1.add(Activation('relu'))
+
 model1.add(BatchNormalization(name="blk2_ly3_batchnorm"))
 
+
 model1.add(MaxPooling2D(pool_size=(2, 2), name="blk2_maxpool")) #OUT: 5X5X128, GRF: 20X20
+
 model1.add(Convolution2D(64, (1, 1), activation='relu', use_bias = False, name="blk2_combine")) #OUT: 5X5X64, GRF: 20X20
+
 model1.add(Dropout(0.20, name="blk2_ly3_dropout"))
 
-# Convolution Block-3
+
+#Convolution Block-3
 model1.add(SeparableConv2D(96, (3, 3), padding='same', use_bias = False, name="blk3_ly1_conv")) #OUT: 5X5X96, GRF: 28X28
+
 model1.add(Activation('relu'))
+
 model1.add(BatchNormalization(name="blk3_ly1_batchnorm"))
+
 model1.add(SeparableConv2D(128, (3, 3), use_bias = False, name="blk3_ly2_conv")) #OUT: 3X3X128, GRF: 36X36
+
 model1.add(Activation('relu'))
+
 model1.add(BatchNormalization(name="blk3_ly2_batchnorm"))
+
 model1.add(Dropout(0.20, name="blk3_ly2_dropout"))
 
-# GAP: just to get num_classes channels as we have num_classes of classes at output
+
+#GAP: just to get num_classes channels as we have num_classes of classes at output
 model1.add(SeparableConv2D(num_classes, (3, 3), use_bias = False, name="blk4_ly1_conv")) #OUT: 1X1X10, GRF: 44X44
 
 model1.add(Flatten(name='flatten'))
+
 model1.add(Activation('softmax', name="output"))
 
 
