@@ -31,9 +31,11 @@ Following Strategy is used to optimize the model performance:
 Model Summary with Output dimensions and Global Receptive Field for each layer
 ------------------------------------------------------------------------------
 #Define the model
+
 model1 = Sequential(name = "model_CIFAR10")
 
 #Convolution Block-1
+
 model1.add(SeparableConv2D(32, (3, 3), padding='same', input_shape=(32, 32, 3), use_bias = False, name="blk1_ly1_conv")) #OUT: 32X32X32, GRF: 3X3
 
 model1.add(Activation('relu'))
@@ -55,6 +57,7 @@ model1.add(Dropout(0.20, name="blk1_ly2_dropout"))
 
 
 #Convolution Block-2
+
 model1.add(SeparableConv2D(64, (3, 3), padding='same', use_bias = False, name="blk2_ly1_conv")) #OUT: 15X15X64, GRF: 10X10
 
 model1.add(Activation('relu'))
@@ -82,6 +85,7 @@ model1.add(Dropout(0.20, name="blk2_ly3_dropout"))
 
 
 #Convolution Block-3
+
 model1.add(SeparableConv2D(96, (3, 3), padding='same', use_bias = False, name="blk3_ly1_conv")) #OUT: 5X5X96, GRF: 28X28
 
 model1.add(Activation('relu'))
@@ -98,6 +102,7 @@ model1.add(Dropout(0.20, name="blk3_ly2_dropout"))
 
 
 #GAP: just to get num_classes channels as we have num_classes of classes at output
+
 model1.add(SeparableConv2D(num_classes, (3, 3), use_bias = False, name="blk4_ly1_conv")) #OUT: 1X1X10, GRF: 44X44
 
 model1.add(Flatten(name='flatten'))
