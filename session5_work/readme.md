@@ -1,11 +1,9 @@
-
-Assignment-5: Person Attributeage Annotation is completed through Web Portal
------------------------------------------------------------------
-
-Assignment-5B: Person Attribute
--------------------------------
+Assignment-5B: Person Attribute Model
+-------------------------------------
 
 Open souce used
+---------------
+
 1. Base ResNet code is taken from https://keras.io/examples/cifar10_resnet/ for model building. 
    This resnet code is further customize to build the model for this assignment.
    
@@ -24,7 +22,7 @@ File: PersonAttrubutes_Attempt1_VGG16.ipynb
 
 4. CyclicLR: Exponential Cycle Policy is used.
 
-5. Batch size=32, 
+5. Batch size=32
 
 6. Seperate build tower is created for age and image_quality class with higher neurons 
    as for these class prediction accuracies are reporting less compare to other classes
@@ -36,19 +34,29 @@ File: PersonAttrubutes_Attempt1_VGG16.ipynb
 
 Total Validation Loss:  7.674099153087985
 Validation Accuracies: 
-{'age_output_acc': 0.3956653225806452,
- 'bag_output_acc': 0.5559475806451613,
- 'emotion_output_acc': 0.7001008064516129,
- 'footwear_output_acc': 0.6008064516129032,
- 'gender_output_acc': 0.6123991935483871,
- 'image_quality_output_acc': 0.5488911290322581,
- 'pose_output_acc': 0.6204637096774194,
- 'weight_output_acc': 0.6466733870967742}
+
+{
+'age_output_acc': 0.3956653225806452,
+
+'bag_output_acc': 0.5559475806451613,
+
+'emotion_output_acc': 0.7001008064516129,
+
+'footwear_output_acc': 0.6008064516129032,
+
+'gender_output_acc': 0.6123991935483871,
+
+'image_quality_output_acc': 0.5488911290322581,
+
+'pose_output_acc': 0.6204637096774194,
+
+'weight_output_acc': 0.6466733870967742
+
+}
  
 
-
-Attempt-1: ResNet32v1, Best at Epochs=10
-----------------------------------------
+Attempt-2: ResNet32v1
+---------------------
 
 File: PersonAttrubutes_Attempt2_ResNet32v1.ipynb
 
@@ -78,19 +86,33 @@ This is replaces by MaxPooling(pool_size(2,2)) followed by 1X1 Kernel
 5. Validation Results
 
 Best model at Epoch=10
+
 Total Validation Loss:  7.6698704534961335
+
 Validation Accuracies: 
-{'age_output_acc': 0.3845766129032258,
- 'bag_output_acc': 0.5650201612903226,
- 'emotion_output_acc': 0.7147177419354839,
- 'footwear_output_acc': 0.623991935483871,
- 'gender_output_acc': 0.6532258064516129,
- 'image_quality_output_acc': 0.5539314516129032,
- 'pose_output_acc': 0.6431451612903226,
- 'weight_output_acc': 0.6335685483870968}
+
+{
+
+	'age_output_acc': 0.3845766129032258,
+	
+	'bag_output_acc': 0.5650201612903226,
+	
+	'emotion_output_acc': 0.7147177419354839,
+	
+	'footwear_output_acc': 0.623991935483871,
+	
+	'gender_output_acc': 0.6532258064516129,
+	
+	'image_quality_output_acc': 0.5539314516129032,
+	
+	'pose_output_acc': 0.6431451612903226,
+	
+	'weight_output_acc': 0.6335685483870968
+	
+}
 
 Attempt-3: ResNet20v1 with Dropout layer
-------------------------------------------
+-----------------------------------------
 
 File: PersonAttrubutes_Attempt3_ResNet20v1.ipynb
 
@@ -102,17 +124,29 @@ File: PersonAttrubutes_Attempt3_ResNet20v1.ipynb
 3. Validation Results
 
 Best model at Epoch=10
+
 Total Validation Loss:  7.429036955679616
+
 Validation Accuracy Score:
+
 {
+
 	'age_output_acc': 0.3709677419354839,
+	
 	'bag_output_acc': 0.5645161290322581,
+	
 	'emotion_output_acc': 0.7106854838709677,
+	
 	'footwear_output_acc': 0.6466733870967742,
+	
 	'gender_output_acc': 0.7011088709677419,
+	
 	'image_quality_output_acc': 0.5554435483870968,
+	
 	'pose_output_acc': 0.7036290322580645,
+	
 	'weight_output_acc': 0.6320564516129032
+	
  }
 
 
