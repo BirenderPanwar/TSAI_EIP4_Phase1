@@ -36,21 +36,22 @@ Total Validation Loss:  7.674099153087985
 Validation Accuracies: 
 
 {
-'age_output_acc': 0.3956653225806452,
 
-'bag_output_acc': 0.5559475806451613,
+	'age_output_acc': 0.3956653225806452,
 
-'emotion_output_acc': 0.7001008064516129,
+	'bag_output_acc': 0.5559475806451613,
 
-'footwear_output_acc': 0.6008064516129032,
+	'emotion_output_acc': 0.7001008064516129,
 
-'gender_output_acc': 0.6123991935483871,
+	'footwear_output_acc': 0.6008064516129032,
 
-'image_quality_output_acc': 0.5488911290322581,
+	'gender_output_acc': 0.6123991935483871,
 
-'pose_output_acc': 0.6204637096774194,
+	'image_quality_output_acc': 0.5488911290322581,
 
-'weight_output_acc': 0.6466733870967742
+	'pose_output_acc': 0.6204637096774194,
+
+	'weight_output_acc': 0.6466733870967742
 
 }
  
@@ -150,4 +151,31 @@ Validation Accuracy Score:
  }
 
 
+Attempt-4: CNN
+-----------------------------------------
+
+File: PersonAttrubutes_Attempt4_CNN.ipynb
+
+1. Simple CNN network is design with 3 Convolution Blocks with increasing depths, Maxpooling followed by Convolution of 1X1 
+   at end of each Block. Batch Normalization after every conv layer to reduce over fitting
+   
+2. Seperate Dense layer of 120 Neuron for each class
+
+3. No Image Augmnettaion to keep network simpler
+
+4. CyclicLR is used: Exponential Cycle Policy
+
+5. Validation Results
+
+Best model at Epoch=10
+
+Total Validation Loss:  7.09
+
+Validation Accuracy Score:
+
+{
+
+	
+	
+ }
 
